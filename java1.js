@@ -1,10 +1,8 @@
 $(document).ready(function() {
+  //Turns html <card> into an array
   var cards = $(".card").toArray()
 
-  $(".container")
-    .find(".card")
-    .flip()
-
+  //Create a shuffle function
   function shuffle(array) {
     var currentIndex = array.length,
       temporaryValue,
@@ -21,13 +19,18 @@ $(document).ready(function() {
     }
     return array
   }
+  //Shuffle all of our <.card> divs
   shuffle(cards)
-  console.log(cards)
+  //After cards have been shuffled, place them within out <.container> div
   $(".container").html(cards)
+  //Allow for cards to be flippable
   $(".container")
     .find(".card")
     .flip()
-  var card1, card2
+
+  var card1
+  var card2
+
   $(".container").on("click", ".card", function(e) {
     e.preventDefault()
     if (card1) {
