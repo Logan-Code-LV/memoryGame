@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(/Users/punchcode/Projects/memoryGame/Assets/milky-way-starry-sky-night-sky-star-956981.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#title {
+  font-size: 48;
+  color: white;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.card {
+  width: 125px;
+  height: 200px;
+  border-radius: 10px;
+  font-size: 50px;
+  border: 1px solid white;
+  transform: scale(1);
+}
+
+.front {
+  width: 125px;
+  height: 200px;
+  background: black;
+}
+
+.back {
+  width: 125px;
+  height: 200px;
+  background: white;
+}
+
+.card:active {
+  transform: scale(0.8);
+  transition: transform 0.5s;
+}
