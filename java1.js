@@ -28,20 +28,31 @@ $(document).ready(function() {
     .find(".card")
     .flip()
 
-  var card1
-  var card2
+  const state = {
+    card1: "",
+    card2: ""
+  }
 
   $(".container").on("click", ".card", function(e) {
     e.preventDefault()
-    if (card1) {
-      card2 = $(this)
-      if (card1.find(".front").html() === card2.find(".front").html()) {
-      } else {
-        card1.flip()
-        card2.flip()
-      }
-    } else {
-      card1 = $(this)
+
+    var value = $(this).data("value")
+
+    console.log(value)
+    if (state.card1 === "") {
+      state.card1 = $(this).data("value")
+    } else if (state.card1 != "") {
+      state.card2 = $(this).data("value")
     }
+    console.log(state.card1, state.card2)
+    if (state.card1 == state.card2) {
+      alert("goodjob")
+    } else {
+      .flip(false)
+    }
+
+    // if (state.card1.find(".back").html() === state.card2.find(".back").html()) {
+    //   this.disabled = true
+    // }
   })
 })
