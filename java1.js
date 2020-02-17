@@ -36,20 +36,30 @@ $(document).ready(function() {
   $(".container").on("click", ".card", function(e) {
     e.preventDefault()
 
-    var value = $(this).data("value")
+    var value = $(this)
 
-    console.log(value)
+    // console.log(value)
     if (state.card1 === "") {
       state.card1 = $(this).data("value")
     } else if (state.card1 != "") {
       state.card2 = $(this).data("value")
+      if (state.card1 == state.card2) {
+        alert("goodjob")
+        state.card1 = ""
+        state.card2 = ""
+      } else {
+        alert("incorrect")
+        state.card1 = ""
+        state.card2 = ""
+      }
     }
-    console.log(state.card1, state.card2)
-    if (state.card1 == state.card2) {
-      alert("goodjob")
-    } else {
-      .flip(false)
-    }
+
+    // console.log(state.card1, state.card2)
+    // if (state.card1 == state.card2) {
+    //   alert("goodjob")
+    // } else {
+    //   $(this).off(".flip")
+    // }
 
     // if (state.card1.find(".back").html() === state.card2.find(".back").html()) {
     //   this.disabled = true
