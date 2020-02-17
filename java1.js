@@ -33,6 +33,13 @@ $(document).ready(function() {
     card2: ""
   }
 
+  var cardFlip = {
+    cardFlipOne: "",
+    cardFlipTwo: ""
+  }
+
+  var lives = 3
+
   $(".container").on("click", ".card", function(e) {
     e.preventDefault()
 
@@ -40,8 +47,10 @@ $(document).ready(function() {
 
     // console.log(value)
     if (state.card1 === "") {
+      cardFlipOne = $(this)
       state.card1 = $(this).data("value")
     } else if (state.card1 != "") {
+      cardFlipTwo = $(this)
       state.card2 = $(this).data("value")
       if (state.card1 == state.card2) {
         alert("goodjob")
@@ -49,20 +58,16 @@ $(document).ready(function() {
         state.card2 = ""
       } else {
         alert("incorrect")
+        $(cardFlipOne).flip(false)
+        $(cardFlipTwo).flip(false)
         state.card1 = ""
         state.card2 = ""
+        lives = lives - 1
+        if (lives < 1) {
+          document.getElementById("bodyid").innerHTML = ""
+          alert("YOU LOSE")
+        }
       }
     }
-
-    // console.log(state.card1, state.card2)
-    // if (state.card1 == state.card2) {
-    //   alert("goodjob")
-    // } else {
-    //   $(this).off(".flip")
-    // }
-
-    // if (state.card1.find(".back").html() === state.card2.find(".back").html()) {
-    //   this.disabled = true
-    // }
   })
 })
