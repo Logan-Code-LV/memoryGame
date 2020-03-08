@@ -21,7 +21,7 @@ $(document).ready(function() {
   }
   //Shuffle all of our <.card> divs
   shuffle(cards)
-  //After cards have been shuffled, place them within out <.container> div
+  //After cards have been shuffled, place them within our <.container> div
   $(".container").html(cards)
   //Allow for cards to be flippable
   $(".container")
@@ -30,7 +30,8 @@ $(document).ready(function() {
 
   const state = {
     card1: "",
-    card2: ""
+    card2: "",
+    matched: []
   }
 
   var cardFlip = {
@@ -38,7 +39,7 @@ $(document).ready(function() {
     cardFlipTwo: ""
   }
 
-  var lives = 3
+  var lives = 10
 
   $(".container").on("click", ".card", function(e) {
     e.preventDefault()
@@ -52,22 +53,29 @@ $(document).ready(function() {
     } else if (state.card1 != "") {
       cardFlipTwo = $(this)
       state.card2 = $(this).data("value")
-      if (state.card1 == state.card2) {
-        alert("goodjob")
-        state.card1 = ""
-        state.card2 = ""
-      } else {
-        alert("incorrect")
-        $(cardFlipOne).flip(false)
-        $(cardFlipTwo).flip(false)
-        state.card1 = ""
-        state.card2 = ""
-        lives = lives - 1
-        if (lives < 1) {
-          document.getElementById("bodyid").innerHTML = ""
-          alert("YOU LOSE")
+      setTimeout(() => {
+        if (state.card1 == state.card2) {
+          alert("goodjob")
+          state.card1 = ""
+          state.card2 = ""
+          state.matched.push(this)
+          console.log(state.matched)
+        } else {
+          alert("incorrect")
+          $(cardFlipOne).flip(false)
+          $(cardFlipTwo).flip(false)
+          state.card1 = ""
+          state.card2 = ""
+          lives = lives - 1
+          if (lives < 1) {
+            document.getElementById("bodyid").innerHTML = ""
+            alert("YOU LOSE")
+          }
+          if (state.matched.length == 9) {
+            alert("Winner!!!!!")
+          }
         }
-      }
+      }, 1000)
     }
   })
 })
