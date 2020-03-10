@@ -39,7 +39,7 @@ $(document).ready(function() {
     cardFlipTwo: ""
   }
 
-  var lives = 10
+  var lives = 20
 
   $(".container").on("click", ".card", function(e) {
     e.preventDefault()
@@ -71,9 +71,9 @@ $(document).ready(function() {
             document.getElementById("bodyid").innerHTML = ""
             alert("YOU LOSE")
           }
-          if (state.matched.length == 9) {
-            alert("Winner!!!!!")
-          }
+        }
+        if (state.matched.length === 9) {
+          alert("Winner!!!!!")
         }
       }, 1000)
     }
