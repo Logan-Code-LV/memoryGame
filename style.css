@@ -53,3 +53,8 @@ h1 {
   transform: scale(0.8);
   transition: transform 0.5s;
 }
+
+.show {
+  width: 800px;
+  height: 500px;
+}

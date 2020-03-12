@@ -28,16 +28,16 @@ $(document).ready(function() {
     .find(".card")
     .flip()
 
-  const state = {
-    card1: "",
-    card2: "",
-    matched: []
-  }
-
   var cardFlip = {
     cardFlipOne: "",
     cardFlipTwo: ""
   }
+
+  const state = {
+    card1: "",
+    card2: ""
+  }
+  var matched = 1
 
   var lives = 20
 
@@ -48,34 +48,38 @@ $(document).ready(function() {
 
     // console.log(value)
     if (state.card1 === "") {
-      cardFlipOne = $(this)
+      cardFlip.cardFlipOne = $(this)
       state.card1 = $(this).data("value")
     } else if (state.card1 != "") {
-      cardFlipTwo = $(this)
+      cardFlip.cardFlipTwo = $(this)
       state.card2 = $(this).data("value")
       setTimeout(() => {
         if (state.card1 == state.card2) {
           alert("goodjob")
           state.card1 = ""
           state.card2 = ""
-          state.matched.push(this)
-          console.log(state.matched)
+          matched = matched + 1
         } else {
           alert("incorrect")
-          $(cardFlipOne).flip(false)
-          $(cardFlipTwo).flip(false)
+          $(cardFlip.cardFlipOne).flip(false)
+          $(cardFlip.cardFlipTwo).flip(false)
           state.card1 = ""
           state.card2 = ""
           lives = lives - 1
           if (lives < 1) {
-            document.getElementById("bodyid").innerHTML = ""
-            alert("YOU LOSE")
+            document.getElementById("bodyid").innerHTML = alert("YOU LOSE")
           }
         }
-        if (state.matched.length === 9) {
-          alert("Winner!!!!!")
+        if (matched === 10) {
+          document.getElementById(
+            "victory"
+          ).innerHTML = `<div style="width:800px;height:500px;padding-bottom:48%;position:relative;"><iframe src="https://giphy.com/embed/KRyXdyTzqFrfW" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p>`
         }
       }, 1000)
     }
+    console.log(state.card1)
+    console.log(state.card2)
+    // console.log(cardFlipOne)
+    // console.log(state.card1)
   })
 })
