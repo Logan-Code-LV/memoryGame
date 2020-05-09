@@ -73,7 +73,7 @@ $(document).ready(function() {
         if (matched === 10) {
           document.getElementById(
             "victory"
-          ).innerHTML = `<div style="width:800px;height:500px;padding-bottom:48%;position:relative;"><iframe src="https://giphy.com/embed/KRyXdyTzqFrfW" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p>`
+          ).innerHTML = `<iframe src="https://giphy.com/embed/srg19CG0cKMuI" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/applause-clapping-oscars-srg19CG0cKMuI">via GIPHY</a></p>`
         }
       }, 1000)
     }
