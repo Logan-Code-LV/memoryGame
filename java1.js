@@ -67,13 +67,11 @@ $(document).ready(function() {
           state.card2 = ""
           lives = lives - 1
           if (lives < 1) {
-            document.getElementById("bodyid").innerHTML = alert("YOU LOSE")
+            window.location.href = "lose.html"
           }
         }
         if (matched === 10) {
-          document.getElementById(
-            "victory"
-          ).innerHTML = `<iframe src="https://giphy.com/embed/srg19CG0cKMuI" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/applause-clapping-oscars-srg19CG0cKMuI">via GIPHY</a></p>`
+          window.location.href = "win.html"
         }
       }, 1000)
     }
